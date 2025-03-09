@@ -15,7 +15,7 @@ public interface IRing {
     boolean isEnabled();
     void setEnabled(boolean enabled);
 
-    UUID getUser();
-    void setUser(UUID user);
+    Player getPlayer();
+    void setPlayer(Player user);
 
 }

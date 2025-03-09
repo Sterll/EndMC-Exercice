@@ -73,6 +73,6 @@ public class CommandRing implements CommandExecutor, TabCompleter {
             });
         }
 
-        return List.of();
+        return completions;
     }
 }

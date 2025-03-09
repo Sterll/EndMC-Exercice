@@ -44,7 +44,7 @@ public class CommandRing implements CommandExecutor, TabCompleter {
                 RingManager ringManager = EMain.getInstance().getRingManager();
 
                 String ring__identifier = args[1];
-                if (ringManager.exists(ring__identifier)){
+                if (!ringManager.exists(ring__identifier)){
                     player.sendMessage("§cL'anneau spécifié n'existe pas.");
                     return true;
                 } if (action_identifier.equalsIgnoreCase("enable") && ringManager.canEnableRing(ring__identifier, player)) {

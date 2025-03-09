@@ -22,14 +22,22 @@ public class RingManager {
         return rings.containsKey(identifier);
     }
 
-    public boolean canEnableRing(String identifier) {
+    public boolean canEnableRing(String identifier, Player player) {
         IRing ring = getRing(identifier);
-        return ring != null && !ring.isEnabled();
+        if(!(ring != null && !ring.isEnabled())){
+            player.sendMessage("§cL'anneau spécifié n'existe pas ou est déjà activé.");
+            return false;
+        }
+        return true;
     }
 
-    public boolean canDisableRing(String identifier) {
+    public boolean canDisableRing(String identifier, Player player) {
         IRing ring = getRing(identifier);
-        return ring != null && ring.isEnabled();
+        if(!(ring != null && ring.isEnabled())){
+            player.sendMessage("§cL'anneau spécifié n'existe pas ou est déjà désactivé.");
+            return false;
+        }
+        return true;
     }
 
     public void enableRing(String identifier, Player player) {

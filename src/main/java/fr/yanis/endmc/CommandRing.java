@@ -36,14 +36,16 @@ public class CommandRing implements CommandExecutor {
                     return true;
                 }
 
+                RingManager ringManager = EMain.getInstance().getRingManager();
+
                 String ring__identifier = args[1];
-                if (EMain.getInstance().getRingManager().exists(ring__identifier)){
+                if (ringManager.exists(ring__identifier)){
                     player.sendMessage("§cL'anneau spécifié n'existe pas.");
                     return false;
-                } else if (action_identifier.equalsIgnoreCase("enable")){
-                    EMain.getInstance().getRingManager().enableRing(ring__identifier, player);
-                } else {
-                    EMain.getInstance().getRingManager().disableRing(ring__identifier);
+                } if (action_identifier.equalsIgnoreCase("enable") && ringManager.canEnableRing(ring__identifier, player)) {
+                    ringManager.enableRing(ring__identifier, player);
+                } else if (action_identifier.equalsIgnoreCase("disable") && ringManager.canDisableRing(ring__identifier, player)) {
+                    ringManager.disableRing(ring__identifier);
                 }
         }
 

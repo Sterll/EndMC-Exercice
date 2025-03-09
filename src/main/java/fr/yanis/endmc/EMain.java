@@ -9,6 +9,7 @@ public final class EMain extends JavaPlugin {
     @Override
     public void onEnable() {
         this.ringManager = new RingManager();
+        ringManager.autoRegisterRings();
     }
 
     @Override

@@ -76,11 +76,8 @@ public class RingManager {
     /**
      * Recherche et enregistre automatiquement tous les rings dans le package "fr.yanis.endmc.ring".
      * Attention : cela suppose que chaque classe IRing.
-     *
-     * @param plugin Le plugin principal.
-     * @param player Le joueur (si applicable) à passer au constructeur des rings.
      */
-    public void autoRegisterRings(JavaPlugin plugin, Player player) {
+    public void autoRegisterRings() {
         Reflections reflections = new Reflections("fr.yanis.endmc.ring");
         Set<Class<? extends IRing>> ringClasses = reflections.getSubTypesOf(IRing.class);
         for (Class<? extends IRing> ringClass : ringClasses) {

@@ -27,8 +27,8 @@ public class RingManager {
 
     public boolean canEnableRing(String identifier, Player player) {
         IRing ring = getRing(identifier);
-        if(!(ring != null && !ring.isEnabled())){
-            player.sendMessage("§cL'anneau spécifié n'existe pas ou est déjà activé.");
+        if(ring.isEnabled()){
+            player.sendMessage("§cL'anneau spécifié est déjà activé.");
             return false;
         }
         return true;
@@ -36,8 +36,8 @@ public class RingManager {
 
     public boolean canDisableRing(String identifier, Player player) {
         IRing ring = getRing(identifier);
-        if(!(ring != null && ring.isEnabled())){
-            player.sendMessage("§cL'anneau spécifié n'existe pas ou est déjà désactivé.");
+        if(!ring.isEnabled()){
+            player.sendMessage("§cL'anneau spécifié est déjà désactivé.");
             return false;
         }
         return true;

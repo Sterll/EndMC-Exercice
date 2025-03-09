@@ -49,9 +49,11 @@ public class CommandRing implements CommandExecutor, TabCompleter {
                     return true;
                 } if (action_identifier.equalsIgnoreCase("enable") && ringManager.canEnableRing(ring__identifier, player)) {
                     ringManager.enableRing(ring__identifier, player);
+                    player.sendMessage("§aL'anneau a été activé.");
                     return true;
                 } else if (action_identifier.equalsIgnoreCase("disable") && ringManager.canDisableRing(ring__identifier, player)) {
                     ringManager.disableRing(ring__identifier);
+                    player.sendMessage("§aL'anneau a été désactivé.");
                     return true;
                 }
         }

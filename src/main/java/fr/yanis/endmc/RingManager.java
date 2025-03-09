@@ -18,6 +18,10 @@ public class RingManager {
         return rings.get(identifier);
     }
 
+    public boolean exists(String identifier) {
+        return rings.containsKey(identifier);
+    }
+
     public void enableRing(String identifier, Player player) {
         IRing ring = getRing(identifier);
         if (ring != null) {

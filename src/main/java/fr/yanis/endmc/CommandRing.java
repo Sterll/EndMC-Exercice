@@ -64,7 +64,6 @@ public class CommandRing implements CommandExecutor, TabCompleter {
         if (args.length == 1) {
             completions.add("enable");
             completions.add("disable");
-            return completions;
         } else if (args.length == 2) {
             EMain.getInstance().getRingManager().getRings().keySet().forEach(ring -> {
                 if (ring.startsWith(args[1])) {

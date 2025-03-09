@@ -10,6 +10,7 @@ public final class EMain extends JavaPlugin {
     public void onEnable() {
         this.ringManager = new RingManager();
         ringManager.autoRegisterRings();
+        ringManager.launchTask();
 
         this.getCommand("rings").setExecutor(new CommandRing());
     }

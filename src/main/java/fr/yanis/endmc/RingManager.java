@@ -1,8 +1,11 @@
 package fr.yanis.endmc;
 
 import fr.yanis.endmc.ring.IRing;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 import org.reflections.Reflections;
 
 import java.util.Arrays;
@@ -12,6 +15,7 @@ import java.util.Set;
 public class RingManager {
 
     private HashMap<String, IRing> rings = new HashMap<>();
+    private BukkitTask ringTask;
 
     public void registerRing(IRing ring) {
         rings.put(ring.getIdentifier(), ring);
@@ -71,6 +75,21 @@ public class RingManager {
 
     public HashMap<String, IRing> getRings() {
         return rings;
+    }
+
+    public void launchTask(){
+        this.ringTask = new BukkitRunnable() {
+            @Override
+            public void run() {
+                tickRings();
+            }
+        }.runTaskTimer(EMain.getInstance(), 0, 1L);
+    }
+
+    public void stopTask(){
+        if (ringTask != null) {
+            ringTask.cancel();
+        }
     }
 
     /**

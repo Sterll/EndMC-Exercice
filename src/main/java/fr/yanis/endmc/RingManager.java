@@ -22,6 +22,16 @@ public class RingManager {
         return rings.containsKey(identifier);
     }
 
+    public boolean canEnableRing(String identifier) {
+        IRing ring = getRing(identifier);
+        return ring != null && !ring.isEnabled();
+    }
+
+    public boolean canDisableRing(String identifier) {
+        IRing ring = getRing(identifier);
+        return ring != null && ring.isEnabled();
+    }
+
     public void enableRing(String identifier, Player player) {
         IRing ring = getRing(identifier);
         if (ring != null) {

@@ -84,6 +84,7 @@ public class RingManager {
             try {
                 IRing ring = ringClass.getConstructor().newInstance();
                 registerRing(ring);
+                EMain.getInstance().getLogger().info("Successfully registered ring " + ring.getName());
             } catch (Exception e) {
                 e.printStackTrace();
             }

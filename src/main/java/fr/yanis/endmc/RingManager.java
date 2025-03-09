@@ -2,9 +2,12 @@ package fr.yanis.endmc;
 
 import fr.yanis.endmc.ring.IRing;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.reflections.Reflections;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Set;
 
 public class RingManager {
 
@@ -66,4 +69,27 @@ public class RingManager {
         });
     }
 
+    public HashMap<String, IRing> getRings() {
+        return rings;
+    }
+
+    /**
+     * Recherche et enregistre automatiquement tous les rings dans le package "fr.yanis.endmc.ring".
+     * Attention : cela suppose que chaque classe IRing.
+     *
+     * @param plugin Le plugin principal.
+     * @param player Le joueur (si applicable) à passer au constructeur des rings.
+     */
+    public void autoRegisterRings(JavaPlugin plugin, Player player) {
+        Reflections reflections = new Reflections("fr.yanis.endmc.ring");
+        Set<Class<? extends IRing>> ringClasses = reflections.getSubTypesOf(IRing.class);
+        for (Class<? extends IRing> ringClass : ringClasses) {
+            try {
+                IRing ring = ringClass.getConstructor().newInstance();
+                registerRing(ring);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

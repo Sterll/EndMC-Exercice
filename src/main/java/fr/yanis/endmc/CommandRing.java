@@ -21,7 +21,7 @@ public class CommandRing implements CommandExecutor, TabCompleter {
             return false;
         }
 
-        switch (args.length){
+        switch (args.length) {
             case 0:
                 player.sendMessage("§cVeillez préciser si vous souhaitez désactiver ou activer un anneau.");
                 return true;
@@ -44,10 +44,11 @@ public class CommandRing implements CommandExecutor, TabCompleter {
                 RingManager ringManager = EMain.getInstance().getRingManager();
 
                 String ring__identifier = args[1];
-                if (!ringManager.exists(ring__identifier)){
+                if (!ringManager.exists(ring__identifier)) {
                     player.sendMessage("§cL'anneau spécifié n'existe pas.");
                     return true;
-                } if (action_identifier.equalsIgnoreCase("enable") && ringManager.canEnableRing(ring__identifier, player)) {
+                }
+                if (action_identifier.equalsIgnoreCase("enable") && ringManager.canEnableRing(ring__identifier, player)) {
                     ringManager.enableRing(ring__identifier, player);
                     player.sendMessage("§aL'anneau a été activé.");
                     return true;
@@ -56,6 +57,8 @@ public class CommandRing implements CommandExecutor, TabCompleter {
                     player.sendMessage("§aL'anneau a été désactivé.");
                     return true;
                 }
+
+                return true;
         }
 
         return false;

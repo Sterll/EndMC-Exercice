@@ -1,0 +1,6 @@
+name: EndMC
+version: '1.0-SNAPSHOT'
+main: fr.yanis.endmc.EMain
+api-version: '1.21'
+authors: [ YanisB ]
+website: https://yanis-benyacine.fr

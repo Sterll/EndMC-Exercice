@@ -50,9 +50,9 @@ public class RingManager {
     public void enableRing(String identifier, Player player) {
         IRing ring = getRing(identifier);
         if (ring != null) {
+            ring.setPlayer(player);
             ring.onEnable();
             ring.setEnabled(true);
-            ring.setPlayer(player);
         }
     }
 

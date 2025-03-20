@@ -8,7 +8,7 @@ public interface IRing {
 
     String getName();
     String getIdentifier();
-    void onTick();
+    void onTick(long elapsedTicks);
     void onEnable();
     void onDisable();
 
@@ -17,5 +17,7 @@ public interface IRing {
 
     Player getPlayer();
     void setPlayer(Player user);
+
+    long getElapsedTicks();
 
 }

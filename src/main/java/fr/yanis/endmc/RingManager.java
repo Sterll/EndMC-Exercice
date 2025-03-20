@@ -68,7 +68,7 @@ public class RingManager {
     public void tickRings() {
         rings.values().forEach(ring -> {
             if (ring.isEnabled()) {
-                ring.onTick();
+                ring.onTick(ring.getElapsedTicks());
             }
         });
     }
